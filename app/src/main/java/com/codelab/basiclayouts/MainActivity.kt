@@ -79,11 +79,11 @@ fun AlignYourBodyElement(
     modifier: Modifier = Modifier
 ) {
     Column(
-        modifier= modifier,
+        modifier = modifier,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         Image(
-            painter= painterResource(imageId),
+            painter = painterResource(imageId),
             contentDescription = null,
             contentScale = ContentScale.Crop,
             modifier = Modifier
@@ -91,9 +91,9 @@ fun AlignYourBodyElement(
                 .clip(CircleShape)
         )
         Text(
-            text= stringResource(textId),
-            style= MaterialTheme.typography.h3,
-            modifier= Modifier.paddingFromBaseline(
+            text = stringResource(textId),
+            style = MaterialTheme.typography.h3,
+            modifier = Modifier.paddingFromBaseline(
                 top = 24.dp, bottom = 8.dp
             )
         )
@@ -103,9 +103,31 @@ fun AlignYourBodyElement(
 // Step: Favorite collection card - Material Surface
 @Composable
 fun FavoriteCollectionCard(
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    @DrawableRes imageId: Int,
+    @StringRes textId: Int
 ) {
-    // Implement composable here
+    Surface(
+        shape = MaterialTheme.shapes.small,
+        modifier = modifier
+    ) {
+        Row(
+            verticalAlignment = Alignment.CenterVertically,
+            modifier = Modifier.width(192.dp)
+        ) {
+            Image(
+                painter = painterResource(imageId),
+                contentDescription = null,
+                contentScale = ContentScale.Crop,
+                modifier = Modifier.size(56.dp)
+            )
+            Text(
+                text = stringResource(textId),
+                style = MaterialTheme.typography.h3,
+                modifier = Modifier.padding(horizontal = 16.dp)
+            )
+        }
+    }
 }
 
 // Step: Align your body row - Arrangements
@@ -196,7 +218,9 @@ fun AlignYourBodyElementPreview() {
 fun FavoriteCollectionCardPreview() {
     MySootheTheme {
         FavoriteCollectionCard(
-            modifier = Modifier.padding(8.dp)
+            modifier = Modifier.padding(8.dp),
+            imageId = R.drawable.fc2_nature_meditations,
+            textId = R.string.fc2_nature_meditations
         )
     }
 }
